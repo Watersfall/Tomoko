@@ -53,4 +53,20 @@ public class RustCommands
 			}
 		}
 	}
+
+	public static void stop(MessageCreateEvent event)
+	{
+		if(event.getMessage().getContent().startsWith("%stop"))
+		{
+			TextChannel channel = event.getChannel();
+			if(UserUtils.isWaters(event.getMessageAuthor()))
+			{
+				TomokoBot.RUST_INSTANCE.send("quit");
+			}
+			else
+			{
+				channel.sendMessage(EmbedUtils.getErrorEmbed("You are not allowed to do this!"));
+			}
+		}
+	}
 }

@@ -31,6 +31,7 @@ public class TomokoBot
 		this.api = new DiscordApiBuilder().setToken(token).login().join();
 		api.addMessageCreateListener(RustCommands::whitelist);
 		api.addMessageCreateListener(RustCommands::removeWhitelist);
+		api.addMessageCreateListener(RustCommands::stop);
 	}
 
 	public static void main(String... args) { }
