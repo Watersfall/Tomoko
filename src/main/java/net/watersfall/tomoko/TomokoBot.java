@@ -1,8 +1,10 @@
 package net.watersfall.tomoko;
 
+import io.graversen.fiber.event.bus.DefaultEventBus;
 import io.graversen.rust.rcon.rustclient.RustClient;
 import io.graversen.rust.rcon.serialization.DefaultSerializer;
 import net.watersfall.tomoko.rust.RustCommands;
+import org.java_websocket.client.WebSocketClient;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 
@@ -20,7 +22,9 @@ public class TomokoBot
 					System.getenv("RUST_PASSWORD"),
 					Integer.parseInt(System.getenv("RUST_PORT")))
 				.withSerializer(new DefaultSerializer())
+				.withEventBus(new DefaultEventBus())
 				.build();
+		((WebSocketClient)(RUST_INSTANCE.getWebSocketClient())).setConnectionLostTimeout(-1);
 		RUST_INSTANCE.open();
 	}
 
