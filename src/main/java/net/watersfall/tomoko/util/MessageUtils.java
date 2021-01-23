@@ -16,4 +16,16 @@ public class MessageUtils
 			return args;
 		}
 	}
+
+	public static String getCommand(String message)
+	{
+		if(!message.contains(" "))
+		{
+			return message.trim();
+		}
+		else
+		{
+			return message.substring(0, message.indexOf(" ")).trim();
+		}
+	}
 }

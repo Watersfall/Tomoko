@@ -4,6 +4,8 @@ import io.graversen.fiber.event.bus.DefaultEventBus;
 import io.graversen.rust.rcon.rustclient.RustClient;
 import io.graversen.rust.rcon.serialization.DefaultSerializer;
 import net.watersfall.tomoko.rust.RustCommands;
+import net.watersfall.tomoko.weeb.GenericCommands;
+import net.watersfall.tomoko.weeb.TomokoCommands;
 import org.java_websocket.client.WebSocketClient;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
@@ -36,6 +38,9 @@ public class TomokoBot
 		api.addMessageCreateListener(RustCommands::whitelist);
 		api.addMessageCreateListener(RustCommands::removeWhitelist);
 		api.addMessageCreateListener(RustCommands::stop);
+		api.addMessageCreateListener(TomokoCommands::imageCommand);
+		api.addMessageCreateListener(TomokoCommands::tomokoCommand);
+		api.addMessageCreateListener(GenericCommands::smugCommand);
 	}
 
 	public static void main(String... args) { }

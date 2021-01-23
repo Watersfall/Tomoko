@@ -14,4 +14,11 @@ public class EmbedUtils
 				.setDescription(message);
 		return builder;
 	}
+
+	public static EmbedBuilder getImageEmbed(String title, String image)
+	{
+		EmbedBuilder builder = new EmbedBuilder();
+		builder.setTitle(title).setImage(image);
+		return builder;
+	}
 }
