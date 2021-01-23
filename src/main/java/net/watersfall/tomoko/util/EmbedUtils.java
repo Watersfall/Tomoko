@@ -15,6 +15,15 @@ public class EmbedUtils
 		return builder;
 	}
 
+	public static EmbedBuilder getMessageEmbed(String message)
+	{
+		EmbedBuilder builder = new EmbedBuilder();
+		builder.setTitle("Success!")
+				.setColor(Color.BLUE)
+				.setDescription(message);
+		return builder;
+	}
+
 	public static EmbedBuilder getImageEmbed(String title, String image)
 	{
 		EmbedBuilder builder = new EmbedBuilder();

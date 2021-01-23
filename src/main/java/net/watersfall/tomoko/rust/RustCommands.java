@@ -1,5 +1,6 @@
 package net.watersfall.tomoko.rust;
 
+import io.graversen.rust.rcon.objects.RconReceive;
 import net.watersfall.tomoko.TomokoBot;
 import net.watersfall.tomoko.util.EmbedUtils;
 import net.watersfall.tomoko.util.MessageUtils;
@@ -23,7 +24,8 @@ public class RustCommands
 			{
 				try { Long.parseLong(args[0]); }
 				catch(NumberFormatException e) { channel.sendMessage(EmbedUtils.getErrorEmbed("Invalid Steam ID!")); }
-				TomokoBot.RUST_INSTANCE.send(String.format("oxide.grant user %s whitelist.allow", args[0]));
+				RconReceive receive = TomokoBot.RUST_INSTANCE.sendAsyncBlocking(String.format("oxide.grant user %s whitelist.allow", args[0]));
+				channel.sendMessage(EmbedUtils.getMessageEmbed(receive.getMessage()));
 			}
 		}
 	}
@@ -44,7 +46,8 @@ public class RustCommands
 				{
 					try { Long.parseLong(args[0]); }
 					catch(NumberFormatException e) { channel.sendMessage(EmbedUtils.getErrorEmbed("Invalid Steam ID!")); }
-					TomokoBot.RUST_INSTANCE.send(String.format("oxide.revoke user %s whitelist.allow", args[0]));
+					RconReceive receive = TomokoBot.RUST_INSTANCE.sendAsyncBlocking(String.format("oxide.revoke user %s whitelist.allow", args[0]));
+					channel.sendMessage(EmbedUtils.getMessageEmbed(receive.getMessage()));
 				}
 			}
 			else
