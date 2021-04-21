@@ -54,7 +54,7 @@ public class TomokoCommands
 				String command = MessageUtils.getCommand(event.getMessageContent());
 				if(images.containsKey(command))
 				{
-					event.getChannel().sendMessage(EmbedUtils.getImageEmbed(command + " bot", images.get(command)));
+					event.getChannel().sendMessage(command + " bot\n" + images.get(command));
 				}
 			}
 		}
@@ -70,12 +70,12 @@ public class TomokoCommands
 				if(args.length == 0)
 				{
 					int random = (int)(Math.random() * tomokos.size());
-					event.getChannel().sendMessage(EmbedUtils.getImageEmbed("Tomoko #" + random, tomokos.get(random)));
+					event.getChannel().sendMessage("Tomoko #" + random + "\n" + tomokos.get(random));
 				}
 				else if(args.length == 1 && args[0].matches("-?\\d+"))
 				{
 					int index = Integer.parseInt(args[0]);
-					event.getChannel().sendMessage(EmbedUtils.getImageEmbed("Tomoko #" + index, tomokos.get(index)));
+					event.getChannel().sendMessage("Tomoko #" + index + "\n" + tomokos.get(index));
 				}
 			}
 		}
